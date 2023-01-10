@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+  goodreads-config:
+    container_name: goodreads-config
+    image: jmreif/goodreads-config
+    ports:
+      - "8888:8888"
+    environment:
+      - SPRING_PROFILES_ACTIVE=native,docker
+    volumes:
+      - $HOME/Projects/config/microservices-java-config:/config
+      - $HOME/Projects/docker/goodreads/config-server/logs:/logs
+    networks:
+      - goodreads
+  backend:
+    container_name: backend
+    build: ./backend
+    ports:
+      - "8081:8081"
+    depends_on:
+      - goodreads-config
+    restart: on-failure
+    environment:
+      - SPRING_APPLICATION_NAME=neo4j-client
+      - SPRING_CONFIG_IMPORT=configserver:http://goodreads-config:8888
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - goodreads
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+    restart: on-failure
+    environment:
+      - BACKEND_HOSTNAME=backend
+    networks:
+      - goodreads
+networks:
+  goodreads:
