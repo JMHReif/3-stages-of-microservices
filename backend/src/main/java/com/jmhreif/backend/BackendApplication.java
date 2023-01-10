@@ -26,7 +26,7 @@ public class BackendApplication {
 @RestController
 @RequestMapping("/neo")
 @AllArgsConstructor
-class MessageController {
+class ReviewController {
 	private final ReviewRepository repo;
 
 	@GetMapping
