@@ -1,0 +1,25 @@
+= Microservices Demo - 3 stages
+
+This code repository is based upon levels 1-9 of the more comprehensive https://github.com/JMHReif/microservices-java[microservices-java^] project.
+
+== Project branches
+
+Each branch contains code for stepping through the project at three different stages.
+
+1. Application chatter - 2 Spring Boot applications communicating over REST returning text strings.
+2. Interacting with a database - Adding a database underneath, with one Spring Boot application acting as backend API provider and the other application acting as client application.
+3. Managed microservices system - incorporating Docker Compose to manage and run a variety of containerized services together, including the configuration server and applications.
+
+== Presentation
+
+PDF versions of accompanying presentations are published to SpeakerDeck.
+
+// * https://speakerdeck.com/jmhreif/divide-and-conquer-send-forth-the-microservices-9d6a6428-0a4f-4a43-b03d-31a9d7de4530[StarOf Java event 2023^]
+
+== Resources
+
+* https://github.com/JMHReif/microservices-java[Full microservices code project^]
+* https://jmhreif.com/blog/[Microservices project blog posts^]
+** https://github.com/JMHReif/microservices-level1[Code: Part 1^]
+** https://github.com/JMHReif/microservices-level6[Code: Part 2^]
+** https://github.com/JMHReif/microservices-level9[Code: Part 3^]
